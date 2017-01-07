@@ -18,9 +18,9 @@ module Amethyst
         @status = status
       end
 
-      # "builds" an HTTP::Response from self
+      # "builds" an Http::Response from self
       def build
-        return HTTP::Response.new(@status, @body, headers = @headers)
+        return Http::Response.new(@status, @body, headers = @headers)
       end
 
       def cookie(key, value, secure=false, http_only=false, path="", domain="", expires="")
