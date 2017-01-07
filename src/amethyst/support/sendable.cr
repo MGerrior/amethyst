@@ -1,7 +1,6 @@
 module Amethyst
   module Support
     module Sendable
-
       class WrongNumberOfArguments < Exception
         def initialize(method, given, expected)
           super("Wrong number of arguments for '#{method}' (#{given} for #{expected})")
@@ -30,7 +29,7 @@ module Amethyst
         end
       end
 
-      def send(method, args={} of Symbol => String)
+      def send(method, args = {} of Symbol => String)
         create_send
       end
     end

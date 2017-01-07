@@ -13,7 +13,7 @@ module Amethyst
                    else
                      @pattern.gsub(/\/$/, "\$")
                    end
-        @length  = @pattern.split("/").size
+        @length = @pattern.split("/").size
         @methods = [] of String
       end
 
@@ -39,8 +39,8 @@ module Amethyst
 
       # Returns hash of params of given path
       def params(path)
-        params        = {} of String => String
-        path_items    = path.split("/")
+        params = {} of String => String
+        path_items = path.split("/")
         pattern_items = @pattern.split("/")
         path_items.size.times do |i|
           if pattern_items[i].match(/(:\w*)/)

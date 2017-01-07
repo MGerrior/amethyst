@@ -6,7 +6,7 @@ module Amethyst
           instance = Class.allocate
           instance.initialize(*args)
           instance
-        end  
+        end
       end
 
       macro singleton_INSTANCE

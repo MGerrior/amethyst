@@ -50,7 +50,6 @@ module Amethyst
           @pool.delete(sid)
         end
       end
-
     end
   end
 end

@@ -1,7 +1,6 @@
 module Amethyst
   module Base
-    class Logger 
-
+    class Logger
       include Sugar::Klass
       singleton_INSTANCE
 
@@ -10,7 +9,7 @@ module Amethyst
       setter :indent
       setter :name
 
-      def initialize(@justify=120, @indent=3, @symbol='_')
+      def initialize(@justify = 120, @indent = 3, @symbol = '_')
         @app = self
       end
 
@@ -20,14 +19,14 @@ module Amethyst
           string << (@symbol.to_s*4)
           string << "/ #{name} \\"
         end
-        heading = heading.ljust(@justify+1, @symbol)
+        heading = heading.ljust(@justify + 1, @symbol)
         heading += "\n"
         puts heading
       end
 
-      def log_heading(name : String, level=1, indent=@indent)
-        indent     = level*indent
-        justify    = @justify
+      def log_heading(name : String, level = 1, indent = @indent)
+        indent = level*indent
+        justify = @justify
         heading = String.build do |string|
           string << "\n"
           string << " "*indent
@@ -38,11 +37,11 @@ module Amethyst
         print heading
       end
 
-      def log_hash(hash_object, skip = [] of String, justify=15, skip_empty_values=true)
+      def log_hash(hash_object, skip = [] of String, justify = 15, skip_empty_values = true)
         print "\n"
         hash_object.each do |name, value|
           value = false if value.to_s.empty?
-          name  = name.to_s
+          name = name.to_s
           next if skip.includes? name
           next unless value && skip_empty_values
           @indent.times { print " " }
@@ -54,9 +53,9 @@ module Amethyst
         end
       end
 
-      def log_array(array_obj : Array, skip = [] of String, justify=15)
+      def log_array(array_obj : Array, skip = [] of String, justify = 15)
         array_obj.each do |item|
-          item  = item.to_s
+          item = item.to_s
           next if skip.includes? item
           @indent.times { print " " }
           item = item.ljust(justify, ' ')
@@ -65,9 +64,9 @@ module Amethyst
         end
       end
 
-      def log_string(string : String, level=1, indent=@indent)
-        indent     = level*indent
-        justify    = @justify - indent
+      def log_string(string : String, level = 1, indent = @indent)
+        indent = level*indent
+        justify = @justify - indent
         print "\n"
         indent.times { print " " }
         print string
@@ -82,9 +81,9 @@ module Amethyst
         end
       end
 
-      def log_subheading(name : String, level=1, indent=@indent)
-        indent     = level*indent
-        justify    = @justify
+      def log_subheading(name : String, level = 1, indent = @indent)
+        indent = level*indent
+        justify = @justify
         subheading = String.build do |string|
           string << "\n"
           string << " "*indent
@@ -97,7 +96,7 @@ module Amethyst
 
       def log_end
         print "\n"
-        (@justify-1).times {print @symbol}
+        (@justify - 1).times { print @symbol }
         print "\n"
       end
     end
