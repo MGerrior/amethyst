@@ -30,7 +30,6 @@ module Amethyst
         return false unless path.split("/").size == @length
         regex = Regex.new(@pattern.to_s.gsub(/(:\w*)/, ".*"))
         matches = false
-
         if path.match(regex)
           raise Exceptions::HttpMethodNotAllowed.new(method, @methods) unless @methods.includes?(method)
           matches = true
