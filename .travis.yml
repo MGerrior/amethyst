@@ -1,7 +1,7 @@
 language: crystal
 crystal:
+  - 0.10.0
   - latest
-  - nightly
 matrix:
   allow_failures:
-    - crystal: nightly
+    - crystal: latest
