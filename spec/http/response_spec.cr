@@ -13,8 +13,8 @@ describe Response do
   end
 
   describe "#build" do
-    it "should return HTTP::Response" do
-      response.build.should be_a HTTP::Response
+    it "should return Http::Response" do
+      response.build.should be_a Http::Response
     end
   end
 
