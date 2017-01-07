@@ -8,7 +8,11 @@ module Amethyst
       getter :methods
 
       def initialize(@pattern, @controller, @action)
-        @pattern = @pattern.gsub(/\/$/, "\$") unless @pattern == "/"
+        @pattern = if @pattern == "/"
+                     "/$"
+                   else
+                     @pattern.gsub(/\/$/, "\$")
+                   end
         @length  = @pattern.split("/").size
         @methods = [] of String
       end

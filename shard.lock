@@ -1,6 +1,10 @@
 version: 1.0
 shards:
+  html_builder:
+    github: crystal-lang/html_builder
+    commit: 
+
   mime:
     github: spalger/crystal-mime
-    commit: bb69613b93dd059f68d1b508a31f83ca6c8eaace
+    commit: 945d357157d4dbcab7683b7216e20b6477a9d573
 

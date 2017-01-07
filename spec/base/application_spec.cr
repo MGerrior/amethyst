@@ -1,4 +1,6 @@
+require "spec"
 require "./spec_helper"
+require "../spec_helper"
 # require "minitest/autorun"
 
 describe Base::App do
