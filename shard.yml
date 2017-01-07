@@ -5,3 +5,6 @@ dependencies:
   mime:
     github: spalger/crystal-mime
     branch: master
+  html_builder:
+    github: crystal-lang/html_builder
+    tag: v0.1.0

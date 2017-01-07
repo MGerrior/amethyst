@@ -8,7 +8,11 @@ module Amethyst
       getter :methods
 
       def initialize(@pattern, @controller, @action)
-        @pattern = @pattern.gsub(/\/$/, "\$") unless @pattern == "/"
+        @pattern = if @pattern == "/"
+                     "/$"
+                   else
+                     @pattern.gsub(/\/$/, "\$")
+                   end
         @length  = @pattern.split("/").size
         @methods = [] of String
       end
@@ -26,6 +30,7 @@ module Amethyst
         return false unless path.split("/").size == @length
         regex = Regex.new(@pattern.to_s.gsub(/(:\w*)/, ".*"))
         matches = false
+
         if path.match(regex)
           raise Exceptions::HttpMethodNotAllowed.new(method, @methods) unless @methods.includes?(method)
           matches = true
