@@ -6,25 +6,25 @@ module Amethyst
 
     class Request
       property :method
-      getter   :headers
+      getter :headers
       property :body
-      getter   :version
-      setter   :path
-      getter   :query_string
+      getter :version
+      setter :path
+      getter :query_string
 
       include Support::HeaderHelper
 
       def initialize(base_request : HTTP::Request)
-        @method  = base_request.method
-        @path    = base_request.path.to_s
+        @method = base_request.method
+        @path = base_request.path.to_s
         @headers = base_request.headers
-        @body    = base_request.body
+        @body = base_request.body
         @version = base_request.version
-        @query_string       = base_request.query
-        @query_parameters   = Http::Params.new
-        @path_parameters    = Http::Params.new
+        @query_string = base_request.query
+        @query_parameters = Http::Params.new
+        @path_parameters = Http::Params.new
         @request_parameters = Http::Params.new
-        @cookies            = Http::Params.new
+        @cookies = Http::Params.new
         @accept = ""
       end
 
@@ -114,7 +114,7 @@ module Amethyst
         cookies = cookies_string.split(";")
         cookies.each do |cookie|
           key, value = cookie.strip.split("=")
-          key   = URI.unescape(key)
+          key = URI.unescape(key)
           value = URI.unescape(value)
           cookies_hash[key.strip] = value.strip
         end
@@ -143,17 +143,17 @@ module Amethyst
       # Sets properties to log
       def log
         {
-          "http method"     : @method,
-          "path"            : path,
-          "query string"    : query_string.hash,
-          "protocol"        : protocol,
-          "host"            : host,
-          "port"            : port,
-          "version"         : @version,
-          "query params"    : query_parameters.hash,
-          "path parameters" : path_parameters.hash,
-          "post parameters" : request_parameters.hash,
-          "content type"    : content_type
+          "http method":     @method,
+          "path":            path,
+          "query string":    query_string.hash,
+          "protocol":        protocol,
+          "host":            host,
+          "port":            port,
+          "version":         @version,
+          "query params":    query_parameters.hash,
+          "path parameters": path_parameters.hash,
+          "post parameters": request_parameters.hash,
+          "content type":    content_type,
         }
       end
     end
